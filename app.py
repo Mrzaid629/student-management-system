@@ -137,3 +137,5 @@ def delete_student(id):
 if __name__ == "__main__":
     create_table()
     app.run(debug=True)
+else:
+    create_table()
