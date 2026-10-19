@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #244b9b;
+            text-align: center;
+        }
+
+        p {
+            color: #687386;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #263247;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #9bb8f5;
+            border-color: #2858b8;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .save-btn {
+            background: #2858b8;
+            color: white;
+        }
+
+        .back-btn {
+            background: #e9edf4;
+            color: #263247;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover {
+            background: #1d438f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Add New Student</h1>
+        <p>Enter the student's information below.</p>
+
+        <form action="{{ url_for('add_student') }}" method="POST">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter student name"
+                   required>
+
+            <label for="usn">USN</label>
+            <input type="text" id="usn" name="usn"
+                   placeholder="Example: 1XX23AI001"
+                   required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="student@example.com"
+                   required>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="AI & DS">AI & DS</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Science">Information Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+            </select>
+
+            <label for="year">Academic Year</label>
+            <select id="year" name="year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+
+            <button type="submit" class="btn save-btn">
+                Save Student
+            </button>
+
+            <a href="{{ url_for('index') }}" class="btn back-btn">
+                Back to Home
+            </a>
+
+        </form>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #244b9b;
+            text-align: center;
+        }
+
+        p {
+            color: #687386;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #263247;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .save-btn {
+            background: #2858b8;
+            color: white;
+        }
+
+        .back-btn {
+            background: #e9edf4;
+            color: #263247;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Edit Student</h1>
+        <p>Update the student's information.</p>
+
+        <form method="POST">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   value="{{ student['name'] }}" required>
+
+            <label for="usn">USN</label>
+            <input type="text" id="usn" name="usn"
+                   value="{{ student['usn'] }}" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   value="{{ student['email'] }}" required>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="AI & DS"
+                    {% if student['department'] == 'AI & DS' %}selected{% endif %}>
+                    AI & DS
+                </option>
+                <option value="Computer Science"
+                    {% if student['department'] == 'Computer Science' %}selected{% endif %}>
+                    Computer Science
+                </option>
+                <option value="Information Science"
+                    {% if student['department'] == 'Information Science' %}selected{% endif %}>
+                    Information Science
+                </option>
+                <option value="Electronics"
+                    {% if student['department'] == 'Electronics' %}selected{% endif %}>
+                    Electronics
+                </option>
+                <option value="Mechanical"
+                    {% if student['department'] == 'Mechanical' %}selected{% endif %}>
+                    Mechanical
+                </option>
+                <option value="Civil"
+                    {% if student['department'] == 'Civil' %}selected{% endif %}>
+                    Civil
+                </option>
+            </select>
+
+            <label for="year">Academic Year</label>
+            <select id="year" name="year" required>
+                <option value="1st Year"
+                    {% if student['year'] == '1st Year' %}selected{% endif %}>
+                    1st Year
+                </option>
+                <option value="2nd Year"
+                    {% if student['year'] == '2nd Year' %}selected{% endif %}>
+                    2nd Year
+                </option>
+                <option value="3rd Year"
+                    {% if student['year'] == '3rd Year' %}selected{% endif %}>
+                    3rd Year
+                </option>
+                <option value="4th Year"
+                    {% if student['year'] == '4th Year' %}selected{% endif %}>
+                    4th Year
+                </option>
+            </select>
+
+            <button type="submit" class="btn save-btn">
+                Update Student
+            </button>
+
+            <a href="{{ url_for('index') }}" class="btn back-btn">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+</body>
+</html>
